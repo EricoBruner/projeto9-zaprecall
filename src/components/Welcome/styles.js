@@ -12,6 +12,7 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #fb6b6b;
   gap: 30px;
 
   img {

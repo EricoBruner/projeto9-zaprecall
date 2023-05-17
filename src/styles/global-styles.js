@@ -1,9 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 export const StyledGlobal = createGlobalStyle`
-  * {
-    background: #FB6B6B;
+  body, button {
     font-family: 'Recursive';
+  }
+  body {
+    background: #FB6B6B;
   }
 `;
 

@@ -1,13 +1,15 @@
 import { Logo } from "../Logo";
-import { Questions } from "../Questions";
+import { Cards } from "../Cards";
 
 import { StyledContainer } from "./styles";
+
+import { questions } from "../../utils/questions";
 
 export const Page = () => {
   return (
     <StyledContainer>
       <Logo />
-      <Questions />
+      <Cards questions={questions} />
     </StyledContainer>
   );
 };

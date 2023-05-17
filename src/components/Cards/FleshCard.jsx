@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Question = () => {
+export const FleshCard = () => {
   return (
     <StyledContainer>
       <strong>Pergunta 1</strong>
