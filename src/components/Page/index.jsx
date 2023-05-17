@@ -1,5 +1,6 @@
 import { Logo } from "../Logo";
 import { Cards } from "../Cards";
+import { CompletionBar } from "../CompletionBar";
 
 import { StyledContainer } from "./styles";
 
@@ -10,6 +11,7 @@ export const Page = () => {
     <StyledContainer>
       <Logo />
       <Cards questions={questions} />
+      <CompletionBar />
     </StyledContainer>
   );
 };
