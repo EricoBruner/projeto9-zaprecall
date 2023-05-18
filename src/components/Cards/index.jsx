@@ -4,15 +4,21 @@ import { StyledContainer } from "./styles";
 import { FleshCard } from "./FleshCard";
 
 export const Cards = ({ questions }) => {
-  const [openCard, setOpenCard] = useState(false);
+  const [openCardIndex, setOpenCardIndex] = useState(null);
 
   return (
     <StyledContainer>
       {questions.map((question, index) =>
-        openCard ? (
-          <FleshCard key={index} />
+        openCardIndex === index ? (
+          <FleshCard key={index} question={question} />
         ) : (
-          <Card key={index} id={index + 1} />
+          <Card
+            key={index}
+            id={index + 1}
+            openCard={() => {
+              setOpenCardIndex(index);
+            }}
+          />
         )
       )}
     </StyledContainer>

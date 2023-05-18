@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const Card = ({ id }) => {
+export const Card = ({ id, openCard }) => {
   return (
     <StyledContainer>
       <strong>Pergunta {id}</strong>
-      <ion-icon name="play-outline"></ion-icon>
+      <ion-icon onClick={openCard} name="play-outline"></ion-icon>
     </StyledContainer>
   );
 };
@@ -32,5 +32,6 @@ const StyledContainer = styled.div`
     font-size: 30px;
     color: #333333;
     --ionicon-stroke-width: 40px;
+    cursor: pointer;
   }
 `;
