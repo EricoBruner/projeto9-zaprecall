@@ -1,26 +1,35 @@
 import { useState } from "react";
-import { Card } from "./Card";
-import { StyledContainer } from "./styles";
-import { FleshCard } from "./FleshCard";
 
-export const Cards = ({ questions }) => {
-  const [openCardIndex, setOpenCardIndex] = useState(null);
+import { FleshCard } from "./Card/FleshCard";
+import { QuestionFleshCard } from "./Card/QuestionFleshCard";
+import { AnswerFleshCard } from "./Card/AnswerFleshCard";
+
+export const Cards = ({ id, question, answer }) => {
+  const [openFleshCard, setOpenFleshCard] = useState(true);
+  const [openQuestionFleshCard, setQuestionFleshCard] = useState(false);
+  const [openAnswerFleshCard, setOpenAnswerFleshCard] = useState(false);
+
+  const openQuestion = () => {
+    setOpenAnswerFleshCard(false);
+    setOpenFleshCard(false);
+    setQuestionFleshCard(true);
+  };
+
+  const openAnswer = () => {
+    setOpenFleshCard(false);
+    setQuestionFleshCard(false);
+    setOpenAnswerFleshCard(true);
+  };
 
   return (
-    <StyledContainer>
-      {questions.map((question, index) =>
-        openCardIndex === index ? (
-          <FleshCard key={index} question={question} />
-        ) : (
-          <Card
-            key={index}
-            id={index + 1}
-            openCard={() => {
-              setOpenCardIndex(index);
-            }}
-          />
-        )
+    <>
+      {openFleshCard && <FleshCard id={id} openQuestion={openQuestion} />}
+
+      {openQuestionFleshCard && (
+        <QuestionFleshCard question={question} openAnswer={openAnswer} />
       )}
-    </StyledContainer>
+
+      {openAnswerFleshCard && <AnswerFleshCard answer={answer} />}
+    </>
   );
 };

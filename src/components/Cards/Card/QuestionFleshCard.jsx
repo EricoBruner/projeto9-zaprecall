@@ -1,30 +1,27 @@
 import styled from "styled-components";
 
-export const Card = ({ id, openCard }) => {
+export const QuestionFleshCard = ({ question, openAnswer }) => {
   return (
     <StyledContainer>
-      <strong>Pergunta {id}</strong>
-      <ion-icon onClick={openCard} name="play-outline"></ion-icon>
+      <strong>{question}</strong>
+      <ion-icon onClick={openAnswer} name="reload-outline"></ion-icon>
     </StyledContainer>
   );
 };
 
 const StyledContainer = styled.div`
-  width: 300px;
-  height: 65px;
-  background: #ffffff;
+  background: #ffffd5;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  display: flex;
+  width: 300px;
+  min-height: 130px;
+  padding: 15px;
   box-sizing: border-box;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 15px;
-  padding-right: 15px;
+  position: relative;
 
   strong {
-    font-weight: 700;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 18px;
     color: #333333;
   }
 
@@ -33,5 +30,8 @@ const StyledContainer = styled.div`
     color: #333333;
     --ionicon-stroke-width: 40px;
     cursor: pointer;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
   }
 `;

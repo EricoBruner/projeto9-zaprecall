@@ -1,5 +1,5 @@
 import { Logo } from "../Logo";
-import { Cards } from "../Cards";
+import { DashboardCards } from "../DashboardCards";
 import { CompletionBar } from "../CompletionBar";
 
 import { StyledContainer } from "./styles";
@@ -10,7 +10,7 @@ export const Page = () => {
   return (
     <StyledContainer>
       <Logo />
-      <Cards questions={questions} />
+      <DashboardCards questions={questions} />
       <CompletionBar />
     </StyledContainer>
   );
