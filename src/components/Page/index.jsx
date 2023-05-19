@@ -13,25 +13,19 @@ export const Page = () => {
     total: questions.length,
   });
 
-  const userAnswer = (answer) => {
-    switch (answer) {
-      case "zap":
-        // code block
-        break;
-      case "ididntremember":
-        // code block
-        break;
-      case "ialmostdidntremember":
-        break;
-      default:
-      // code block
-    }
+  const questionAnswered = () => {
+    let novoCompleted = { ...completed };
+    novoCompleted.answered += 1;
+    setCompleted(novoCompleted);
   };
 
   return (
     <StyledContainer>
       <Logo />
-      <DashboardCards questions={questions} />
+      <DashboardCards
+        questions={questions}
+        questionAnswered={questionAnswered}
+      />
       <CompletionBar completed={completed} />
     </StyledContainer>
   );

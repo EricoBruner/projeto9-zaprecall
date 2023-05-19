@@ -4,7 +4,7 @@ import { OpenFleshCard } from "./Card/OpenFleshCard";
 import { FleshCard } from "./Card/FleshCard";
 import { FlashCardAnswered } from "./Card/FlashCardAnswered";
 
-export const Cards = ({ id, question, answer }) => {
+export const Cards = ({ id, question, answer, questionAnswered }) => {
   const [viewOpenFleshCard, setViewOpenFleshCard] = useState(true);
   const [viewFleshCard, setViewFleshCard] = useState(false);
   const [state, setState] = useState("");
@@ -17,6 +17,7 @@ export const Cards = ({ id, question, answer }) => {
   const answerQuestion = (answer) => {
     setViewFleshCard(false);
     setState(answer);
+    questionAnswered();
   };
 
   return (
