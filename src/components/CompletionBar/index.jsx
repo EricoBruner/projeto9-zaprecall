@@ -1,9 +1,14 @@
 import { StyledContainer } from "./styles";
 
-export const CompletionBar = () => {
+export const CompletionBar = ({ completed }) => {
+  const { answered, total } = completed;
+
   return (
     <StyledContainer>
-      <strong>0/4 </strong>CONCLUÍDOS
+      <strong>
+        {answered}/{total}
+      </strong>
+      <strong> CONCLUÍDOS</strong>
     </StyledContainer>
   );
 };

@@ -1,30 +1,58 @@
+import { useState } from "react";
+
 import styled from "styled-components";
 
-export const FleshCard = ({ id, openQuestion }) => {
+export const FleshCard = ({ question, answer, answerQuestion }) => {
+  const [viewAnswer, setViewAnswer] = useState(false);
+
+  const openAnswer = () => {
+    setViewAnswer(true);
+  };
+
   return (
     <StyledContainer>
-      <strong>Pergunta {id}</strong>
-      <ion-icon onClick={openQuestion} name="play-outline"></ion-icon>
+      <strong>{viewAnswer ? answer : question}</strong>
+
+      {!viewAnswer && (
+        <ion-icon onClick={openAnswer} name="reload-outline"></ion-icon>
+      )}
+
+      {viewAnswer && (
+        <div>
+          <StyledButtonRed onClick={() => answerQuestion("ididntremember")}>
+            Não lembrei
+          </StyledButtonRed>
+          <StyledButtonYellow
+            onClick={() => answerQuestion("ialmostdidntremember")}
+          >
+            Quase não lembrei
+          </StyledButtonYellow>
+          <StyledButtonGreen onClick={() => answerQuestion("zap")}>
+            Zap!
+          </StyledButtonGreen>
+        </div>
+      )}
     </StyledContainer>
   );
 };
 
 const StyledContainer = styled.div`
-  width: 300px;
-  height: 65px;
-  background: #ffffff;
+  background: #ffffd5;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
-  display: flex;
+  width: 300px;
+  min-height: 130px;
+  padding: 15px;
   box-sizing: border-box;
-  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding-left: 15px;
-  padding-right: 15px;
+  gap: 20px;
 
   strong {
-    font-weight: 700;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 18px;
     color: #333333;
   }
 
@@ -33,5 +61,37 @@ const StyledContainer = styled.div`
     color: #333333;
     --ionicon-stroke-width: 40px;
     cursor: pointer;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
   }
+
+  button {
+    width: 100%;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 12px;
+    height: 38px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    text-align: center;
+  }
+
+  div {
+    display: flex;
+    gap: 7px;
+  }
+`;
+
+const StyledButtonRed = styled.button`
+  background: #ff3030;
+`;
+
+const StyledButtonYellow = styled.button`
+  background: #ff922e;
+`;
+
+const StyledButtonGreen = styled.button`
+  background: #2fbe34;
 `;

@@ -1,35 +1,38 @@
 import { useState } from "react";
 
+import { OpenFleshCard } from "./Card/OpenFleshCard";
 import { FleshCard } from "./Card/FleshCard";
-import { QuestionFleshCard } from "./Card/QuestionFleshCard";
-import { AnswerFleshCard } from "./Card/AnswerFleshCard";
+import { FlashCardAnswered } from "./Card/FlashCardAnswered";
 
 export const Cards = ({ id, question, answer }) => {
-  const [openFleshCard, setOpenFleshCard] = useState(true);
-  const [openQuestionFleshCard, setQuestionFleshCard] = useState(false);
-  const [openAnswerFleshCard, setOpenAnswerFleshCard] = useState(false);
+  const [viewOpenFleshCard, setViewOpenFleshCard] = useState(true);
+  const [viewFleshCard, setViewFleshCard] = useState(false);
+  const [state, setState] = useState("");
 
-  const openQuestion = () => {
-    setOpenAnswerFleshCard(false);
-    setOpenFleshCard(false);
-    setQuestionFleshCard(true);
+  const openFleshCard = () => {
+    setViewOpenFleshCard(false);
+    setViewFleshCard(true);
   };
 
-  const openAnswer = () => {
-    setOpenFleshCard(false);
-    setQuestionFleshCard(false);
-    setOpenAnswerFleshCard(true);
+  const answerQuestion = (answer) => {
+    setViewFleshCard(false);
+    setState(answer);
   };
 
   return (
     <>
-      {openFleshCard && <FleshCard id={id} openQuestion={openQuestion} />}
-
-      {openQuestionFleshCard && (
-        <QuestionFleshCard question={question} openAnswer={openAnswer} />
+      {viewOpenFleshCard && (
+        <OpenFleshCard id={id} openFleshCard={openFleshCard} />
       )}
+      {state != "" && <FlashCardAnswered id={id} state={state} />}
 
-      {openAnswerFleshCard && <AnswerFleshCard answer={answer} />}
+      {viewFleshCard && (
+        <FleshCard
+          question={question}
+          answer={answer}
+          answerQuestion={answerQuestion}
+        />
+      )}
     </>
   );
 };
