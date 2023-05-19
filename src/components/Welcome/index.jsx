@@ -14,7 +14,9 @@ export const Welcome = () => {
     <StyledContainer gameStarted={gameStarted}>
       <img src={logo} alt="logo" />
       <h1>ZapRecall</h1>
-      <button onClick={() => startGame()}>Iniciar Recall!</button>
+      <button data-test="start-btn" onClick={() => startGame()}>
+        Iniciar Recall!
+      </button>
     </StyledContainer>
   );
 };
