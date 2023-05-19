@@ -5,7 +5,7 @@ export const CompletionBar = ({ completed }) => {
 
   return (
     <StyledContainer>
-      <strong>
+      <strong data-test="footer">
         {answered}/{total}
       </strong>
       <strong> CONCLUÍDOS</strong>

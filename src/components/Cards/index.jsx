@@ -21,7 +21,7 @@ export const Cards = ({ id, question, answer, questionAnswered }) => {
   };
 
   return (
-    <>
+    <div data-test="flashcard">
       {viewOpenFleshCard && (
         <OpenFleshCard id={id} openFleshCard={openFleshCard} />
       )}
@@ -34,6 +34,6 @@ export const Cards = ({ id, question, answer, questionAnswered }) => {
           answerQuestion={answerQuestion}
         />
       )}
-    </>
+    </div>
   );
 };

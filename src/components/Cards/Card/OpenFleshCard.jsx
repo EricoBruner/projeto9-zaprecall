@@ -3,8 +3,12 @@ import styled from "styled-components";
 export const OpenFleshCard = ({ id, openFleshCard }) => {
   return (
     <StyledContainer>
-      <strong>Pergunta {id}</strong>
-      <ion-icon onClick={openFleshCard} name="play-outline"></ion-icon>
+      <strong data-test="flashcard-text">Pergunta {id}</strong>
+      <ion-icon
+        data-test="play-btn"
+        onClick={openFleshCard}
+        name="play-outline"
+      ></ion-icon>
     </StyledContainer>
   );
 };

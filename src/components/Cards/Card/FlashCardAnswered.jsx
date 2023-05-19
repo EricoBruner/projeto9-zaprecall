@@ -2,21 +2,25 @@ import styled from "styled-components";
 
 export const FlashCardAnswered = ({ id, state }) => {
   let iconName = "";
+  let dataTest = "";
 
   if (state === "ididntremember") {
     iconName = "close-circle";
+    dataTest = "no-icon";
   }
   if (state === "ialmostdidntremember") {
     iconName = "help-circle";
+    dataTest = "partial-icon";
   }
   if (state === "zap") {
     iconName = "checkmark-circle";
+    dataTest = "zap-icon";
   }
 
   return (
     <StyledContainer state={state}>
-      <strong>Pergunta {id}</strong>
-      <ion-icon name={iconName}></ion-icon>
+      <strong data-test="flashcard-text">Pergunta {id}</strong>
+      <ion-icon data-test={dataTest} name={iconName}></ion-icon>
     </StyledContainer>
   );
 };

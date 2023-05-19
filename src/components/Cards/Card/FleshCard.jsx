@@ -11,23 +11,36 @@ export const FleshCard = ({ question, answer, answerQuestion }) => {
 
   return (
     <StyledContainer>
-      <strong>{viewAnswer ? answer : question}</strong>
+      <strong data-test="flashcard-text">
+        {viewAnswer ? answer : question}
+      </strong>
 
       {!viewAnswer && (
-        <ion-icon onClick={openAnswer} name="reload-outline"></ion-icon>
+        <ion-icon
+          data-test="turn-btn"
+          onClick={openAnswer}
+          name="reload-outline"
+        ></ion-icon>
       )}
 
       {viewAnswer && (
         <div>
-          <StyledButtonRed onClick={() => answerQuestion("ididntremember")}>
+          <StyledButtonRed
+            data-test="no-btn"
+            onClick={() => answerQuestion("ididntremember")}
+          >
             Não lembrei
           </StyledButtonRed>
           <StyledButtonYellow
+            data-test="partial-btn"
             onClick={() => answerQuestion("ialmostdidntremember")}
           >
             Quase não lembrei
           </StyledButtonYellow>
-          <StyledButtonGreen onClick={() => answerQuestion("zap")}>
+          <StyledButtonGreen
+            data-test="zap-btn"
+            onClick={() => answerQuestion("zap")}
+          >
             Zap!
           </StyledButtonGreen>
         </div>
