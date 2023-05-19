@@ -11,11 +11,13 @@ export const Page = () => {
   const [completed, setCompleted] = useState({
     answered: 0,
     total: questions.length,
+    icons: [],
   });
 
-  const questionAnswered = () => {
+  const questionAnswered = (icon) => {
     let novoCompleted = { ...completed };
     novoCompleted.answered += 1;
+    novoCompleted.icons.push(icon);
     setCompleted(novoCompleted);
   };
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { OpenFleshCard } from "./Card/OpenFleshCard";
 import { FleshCard } from "./Card/FleshCard";
@@ -8,6 +8,9 @@ export const Cards = ({ id, question, answer, questionAnswered }) => {
   const [viewOpenFleshCard, setViewOpenFleshCard] = useState(true);
   const [viewFleshCard, setViewFleshCard] = useState(false);
   const [state, setState] = useState("");
+  const [iconName, setIconName] = useState("");
+
+  useEffect(() => {}, [state]);
 
   const openFleshCard = () => {
     setViewOpenFleshCard(false);
@@ -15,9 +18,22 @@ export const Cards = ({ id, question, answer, questionAnswered }) => {
   };
 
   const answerQuestion = (answer) => {
+    let newIcon = "";
     setViewFleshCard(false);
     setState(answer);
-    questionAnswered();
+
+    if (answer === "ididntremember") {
+      newIcon = "close-circle";
+    }
+    if (answer === "ialmostdidntremember") {
+      newIcon = "help-circle";
+    }
+    if (answer === "zap") {
+      newIcon = "checkmark-circle";
+    }
+
+    questionAnswered(newIcon);
+    setIconName(newIcon);
   };
 
   return (
@@ -25,7 +41,9 @@ export const Cards = ({ id, question, answer, questionAnswered }) => {
       {viewOpenFleshCard && (
         <OpenFleshCard id={id} openFleshCard={openFleshCard} />
       )}
-      {state != "" && <FlashCardAnswered id={id} state={state} />}
+      {state != "" && (
+        <FlashCardAnswered id={id} state={state} iconName={iconName} />
+      )}
 
       {viewFleshCard && (
         <FleshCard

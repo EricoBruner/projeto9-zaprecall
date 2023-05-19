@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const StyledContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -12,4 +13,30 @@ export const StyledContainer = styled.div`
   bottom: 0;
   left: 0;
   gap: 5px;
+
+  div {
+    display: flex;
+  }
+
+  div:first-child {
+    gap: 5px;
+  }
+`;
+
+export const IonIcon = styled.div`
+  ion-icon {
+    font-size: 25px;
+    --ionicon-stroke-width: 40px;
+    color: ${({ icon }) => {
+      if (icon === "close-circle") {
+        return "#FF3030;";
+      }
+      if (icon === "help-circle") {
+        return "#FF922E;";
+      }
+      if (icon === "checkmark-circle") {
+        return "#2FBE34;";
+      }
+    }};
+  }
 `;

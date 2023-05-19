@@ -1,19 +1,15 @@
 import styled from "styled-components";
 
-export const FlashCardAnswered = ({ id, state }) => {
-  let iconName = "";
+export const FlashCardAnswered = ({ id, state, iconName }) => {
   let dataTest = "";
 
   if (state === "ididntremember") {
-    iconName = "close-circle";
     dataTest = "no-icon";
   }
   if (state === "ialmostdidntremember") {
-    iconName = "help-circle";
     dataTest = "partial-icon";
   }
   if (state === "zap") {
-    iconName = "checkmark-circle";
     dataTest = "zap-icon";
   }
 
